@@ -1,8 +1,9 @@
 #pragma once
 #include <cassert>
+#include "BaseArray.h" //Inherits from Base Array
 
-template<class T>
-class OrderedArray
+template<class BaseArray>
+class OrderedArray 
 {
 public:
 	// Constructor
@@ -12,8 +13,8 @@ public:
 		if (size)	// Is this a legal size for an array?
 		{
 			m_maxSize = size;
-			m_array = new T[m_maxSize];		// Dynamically allocating an array to m_maxSize
-			memset(m_array, 0, sizeof(T) * m_maxSize);	// Explicitly set 0 to all elements in the array
+			m_array = new BaseArray[m_maxSize];		// Dynamically allocating an array to m_maxSize
+			memset(m_array, 0, sizeof(BaseArray) * m_maxSize);	// Explicitly set 0 to all elements in the array
 
 			m_growSize = ((growBy > 0) ? growBy : 0);
 		}
@@ -28,7 +29,7 @@ public:
 		}
 	}
 	// Insertion -- Big-O = O(N)
-	void push(T val)
+	void push(BaseArray val)
 	{
 		assert(m_array != nullptr);
 
@@ -94,7 +95,7 @@ public:
 	}
 	// Searching
 	// Binary Search
-	int search(T searchKey)
+	int search(BaseArray searchKey)
 	{
 		assert(m_array != nullptr);
 
@@ -136,7 +137,7 @@ public:
 		return -1;	// Catch all return from danger.
 	}
 	// Overloaded [] operator
-	T& operator[](int index)
+	BaseArray& operator[](int index)
 	{
 		assert(m_array != nullptr && index < m_numElements);
 		return m_array[index];
@@ -176,11 +177,11 @@ private:
 		}
 
 		// Create the new array
-		T* temp = new T[m_maxSize + m_growSize];
+		BaseArray* temp = new BaseArray[m_maxSize + m_growSize];
 		assert(temp != nullptr);
 
 		// Copy the contents of the original array into the new array
-		memcpy(temp, m_array, sizeof(T) * m_maxSize);
+		memcpy(temp, m_array, sizeof(BaseArray) * m_maxSize);
 
 		// Delete the old array
 		delete[] m_array;
@@ -195,7 +196,7 @@ private:
 	}
 private:
 	// Private Variables
-	T* m_array;			// Pointer to the beginning of the array
+	BaseArray* m_array;		// Inherits variable from BaseArray
 
 	int m_maxSize;		// Maximum size of the array
 	int m_growSize;		// Amount the array can grow through expansion
