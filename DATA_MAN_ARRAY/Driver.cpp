@@ -10,17 +10,17 @@ int main()
 	OrderedArray<int> array(3);
 	UnorderedArray<int> uarray(3);
 
-	array.push(3);
-	array.push(53);
-	array.push(83);
-	array.push(23); // Should expand here
-	array.push(82); // Should expand here
+	array.push(4);
+	array.push(33);
+	array.push(90);
+	array.push(23);
+	array.push(82); 
 	
 	uarray.push(1);
 	uarray.push(10);
 	uarray.push(24);
-	uarray.push(17); // Should expand here
-	uarray.push(2);
+	uarray.push(7); 
+	uarray.push(42);
 	
 	cout << "Ordered array contents: "; // Ordered Array output
 
@@ -39,9 +39,4 @@ int main()
 	}
 
 	cout << endl;
-
-	//cout << "Serach for 53 was found at index: ";
-	//cout << array.search(53) << endl; // -1
-	//cout << "Serach for 23 was found at index: ";
-	//cout << array.search(23) << endl; // 1
 }
