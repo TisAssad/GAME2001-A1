@@ -154,7 +154,7 @@ private:
 // Private Variables
 	BaseArray* m_array;			// Pointer to the beginning of the array
 
-	int m_maxSize;		// Maximum size of the array
-	int m_growSize;		// Amount the array can grow through expansion
-	int m_numElements;	// Number of items currently in my array
+	BaseArray m_maxSize;		// Maximum size of the array
+	BaseArray m_growSize;		// Amount the array can grow through expansion
+	BaseArray m_numElements;	// Number of items currently in my array
 };
